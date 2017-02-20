@@ -10,6 +10,49 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>customer.api</artifactId>
+    <packaging>war</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <tomcat7-maven-plugin.path>/customer-api</tomcat7-maven-plugin.path>
+    </properties>
+
+    <build>
+        <finalName>${tomcat7-maven-plugin.path}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <!--<configuration>-->
+                <!--&lt;!&ndash;<outputDirectory>${project.basedir}/target/war</outputDirectory>&ndash;&gt;-->
+                <!--<outputDirectory>/Users/somkiat/data/research/docker/jboss/jboss-eap-6.4/standalone/deployments/</outputDirectory>-->
+                <!--</configuration>-->
+            </plugin>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <path>${tomcat7-maven-plugin.path}</path>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 
 </project>
